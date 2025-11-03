@@ -2,6 +2,7 @@ import "@/styles/global.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type { JSX, ReactNode } from "react";
+import { Theme } from "@/components/plugin/theme-provider";
 
 const fontInter = Inter({
     variable: "--font-inter",
@@ -44,9 +45,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>): JSX.Element {
     return (
-        <html lang="id">
+        <html lang="id" suppressHydrationWarning>
             <body className={`${fontInter.className} antialiased`}>
-                {children}
+                <Theme attribute="class" enableSystem disableTransitionOnChange>
+                    {children}
+                </Theme>
             </body>
         </html>
     )
