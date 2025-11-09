@@ -1,6 +1,6 @@
 {
   "name": "kawasan",
-  "version": "0.0.69",
+  "version": "0.1.14",
   "private": true,
   "scripts": {
     "dev": "next dev",

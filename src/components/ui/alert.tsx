@@ -2,14 +2,59 @@ import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
+/**
+ * Apple-Inspired Alert Component
+ * 
+ * Design Principles:
+ * - Clear visual hierarchy
+ * - Semantic color variants
+ * - Icon support for quick recognition
+ * - Comfortable padding and spacing
+ * - Subtle backgrounds
+ */
+
 const alertVariants = cva(
-  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  /* Base Styles */
+  [
+    "relative w-full rounded-xl",
+    "px-4 py-3.5",
+    "text-sm",
+    "border-2",
+    "flex gap-3 items-start",
+  ],
   {
     variants: {
       variant: {
-        default: "bg-card text-card-foreground",
-        destructive:
-          "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
+        default: [
+          "bg-surface-secondary",
+          "border-border-default",
+          "text-content-primary",
+          "[&>svg]:text-content-secondary",
+        ],
+        info: [
+          "bg-brand-subtle",
+          "border-brand/30",
+          "text-content-primary",
+          "[&>svg]:text-brand",
+        ],
+        success: [
+          "bg-success/10",
+          "border-success/30",
+          "text-content-primary",
+          "[&>svg]:text-success",
+        ],
+        warning: [
+          "bg-warning/10",
+          "border-warning/30",
+          "text-content-primary",
+          "[&>svg]:text-warning",
+        ],
+        danger: [
+          "bg-danger/10",
+          "border-danger/30",
+          "text-content-primary",
+          "[&>svg]:text-danger",
+        ],
       },
     },
     defaultVariants: {
@@ -18,14 +63,19 @@ const alertVariants = cva(
   }
 )
 
+interface AlertProps
+  extends React.ComponentPropsWithoutRef<"div">,
+  VariantProps<typeof alertVariants> { }
+
 function Alert({
   className,
   variant,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+}: AlertProps) {
   return (
     <div
       data-slot="alert"
+      data-variant={variant}
       role="alert"
       className={cn(alertVariants({ variant }), className)}
       {...props}
@@ -33,12 +83,33 @@ function Alert({
   )
 }
 
-function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
+function AlertIcon({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<"div">) {
+  return (
+    <div
+      data-slot="alert-icon"
+      className={cn(
+        "shrink-0 [&>svg]:size-5",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function AlertTitle({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div
       data-slot="alert-title"
       className={cn(
-        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
+        "font-semibold tracking-tight",
+        "leading-tight",
+        "mb-1",
         className
       )}
       {...props}
@@ -49,12 +120,15 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
 function AlertDescription({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div
       data-slot="alert-description"
       className={cn(
-        "text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+        "text-sm leading-relaxed",
+        "[&>a]:underline [&>a]:underline-offset-2",
+        "[&>a]:font-medium",
+        "[&>a:hover]:text-interactive-hover",
         className
       )}
       {...props}
@@ -62,7 +136,29 @@ function AlertDescription({
   )
 }
 
-export { Alert, AlertTitle, AlertDescription }
+function AlertContent({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<"div">) {
+  return (
+    <div
+      data-slot="alert-content"
+      className={cn("flex-1 flex flex-col", className)}
+      {...props}
+    />
+  )
+}
 
+export {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  AlertContent,
+  type AlertProps,
+}
+
+Alert.Icon = AlertIcon
 Alert.Title = AlertTitle
 Alert.Description = AlertDescription
+Alert.Content = AlertContent

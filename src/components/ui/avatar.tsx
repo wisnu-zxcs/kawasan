@@ -4,15 +4,49 @@ import * as AvatarPrimitive from "@radix-ui/react-avatar"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
+/**
+ * Apple-Inspired Avatar Component
+ * 
+ * Design Principles:
+ * - Circular profile images
+ * - Smooth fallback handling
+ * - Size variants
+ * - Status indicator support
+ * - Clean borders
+ */
+
+interface AvatarProps
+  extends React.ComponentProps<typeof AvatarPrimitive.Root> {
+  size?: "sm" | "md" | "lg" | "xl"
+}
+
 function Avatar({
   className,
+  size = "md",
   ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Root>) {
+}: AvatarProps) {
+  const sizeClasses = {
+    sm: "size-8",
+    md: "size-10",
+    lg: "size-12",
+    xl: "size-16",
+  }
+
   return (
     <AvatarPrimitive.Root
       data-slot="avatar"
+      data-size={size}
       className={cn(
-        "relative flex size-8 shrink-0 overflow-hidden rounded-full",
+        /* Base Styles */
+        [
+          "relative flex shrink-0",
+          "overflow-hidden rounded-full",
+          "border-2 border-border-subtle",
+          "bg-surface-secondary",
+        ],
+
+        sizeClasses[size],
+
         className
       )}
       {...props}
@@ -27,7 +61,10 @@ function AvatarImage({
   return (
     <AvatarPrimitive.Image
       data-slot="avatar-image"
-      className={cn("aspect-square size-full", className)}
+      className={cn(
+        "aspect-square size-full object-cover",
+        className
+      )}
       {...props}
     />
   )
@@ -41,7 +78,15 @@ function AvatarFallback({
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
       className={cn(
-        "bg-muted flex size-full items-center justify-center rounded-full",
+        /* Base Styles */
+        [
+          "flex size-full items-center justify-center",
+          "bg-surface-tertiary",
+          "text-content-secondary",
+          "text-sm font-medium",
+          "uppercase",
+        ],
+
         className
       )}
       {...props}
@@ -49,7 +94,50 @@ function AvatarFallback({
   )
 }
 
-export { Avatar, AvatarImage, AvatarFallback }
+function AvatarStatus({
+  className,
+  variant = "online",
+  ...props
+}: React.ComponentPropsWithoutRef<"span"> & {
+  variant?: "online" | "offline" | "away" | "busy"
+}) {
+  const variantClasses = {
+    online: "bg-success",
+    offline: "bg-border-default",
+    away: "bg-warning",
+    busy: "bg-danger",
+  }
+
+  return (
+    <span
+      data-slot="avatar-status"
+      data-variant={variant}
+      className={cn(
+        /* Base Styles */
+        [
+          "absolute bottom-0 right-0",
+          "size-3",
+          "rounded-full",
+          "border-2 border-canvas",
+        ],
+
+        variantClasses[variant],
+
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  AvatarStatus,
+  type AvatarProps,
+}
 
 Avatar.Image = AvatarImage
 Avatar.Fallback = AvatarFallback
+Avatar.Status = AvatarStatus

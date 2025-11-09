@@ -4,6 +4,17 @@ import * as SwitchPrimitive from "@radix-ui/react-switch"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
+/**
+ * Apple-Inspired Switch Component
+ * 
+ * Design Principles:
+ * - iOS-style toggle switch
+ * - Smooth slide animation
+ * - Brand color when active
+ * - Comfortable thumb size
+ * - Clear on/off states
+ */
+
 function Switch({
   className,
   ...props
@@ -12,7 +23,39 @@ function Switch({
     <SwitchPrimitive.Root
       data-slot="switch"
       className={cn(
-        "peer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-[state=unchecked]:bg-input/80 inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        /* Base Styles */
+        [
+          "peer inline-flex shrink-0",
+          "h-6 w-11",
+          "rounded-full",
+          "border-2 border-transparent",
+          "transition-all duration-200 ease-out",
+          "outline-none",
+        ],
+
+        /* Unchecked State */
+        [
+          "bg-border-default",
+          "data-[state=unchecked]:bg-border-default",
+        ],
+
+        /* Checked State */
+        [
+          "data-[state=checked]:bg-brand",
+        ],
+
+        /* Focus State */
+        [
+          "focus-visible:ring-4",
+          "focus-visible:ring-brand/20",
+        ],
+
+        /* Disabled State */
+        [
+          "disabled:cursor-not-allowed",
+          "disabled:opacity-40",
+        ],
+
         className
       )}
       {...props}
@@ -20,7 +63,21 @@ function Switch({
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
         className={cn(
-          "bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0"
+          /* Base Styles */
+          [
+            "pointer-events-none block",
+            "size-5",
+            "rounded-full",
+            "bg-canvas",
+            "shadow-md",
+            "transition-transform duration-200 ease-out",
+          ],
+
+          /* Position */
+          [
+            "data-[state=unchecked]:translate-x-0",
+            "data-[state=checked]:translate-x-5",
+          ]
         )}
       />
     </SwitchPrimitive.Root>

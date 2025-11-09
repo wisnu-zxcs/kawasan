@@ -5,6 +5,16 @@ import { CheckIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
+/**
+ * Apple-Inspired Checkbox Component
+ * 
+ * Design Principles:
+ * - Smooth check animation
+ * - Clear checked state with brand color
+ * - Comfortable touch target
+ * - Refined focus ring
+ */
+
 function Checkbox({
   className,
   ...props
@@ -13,16 +23,55 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-lg border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        /* Base Styles */
+        [
+          "peer shrink-0",
+          "size-5",
+          "rounded-lg",
+          "border-2 border-border-default",
+          "bg-surface",
+          "transition-all duration-200 ease-out",
+          "outline-none",
+        ],
+
+        /* Hover State */
+        "hover:border-border-emphasis",
+        "hover:bg-surface-secondary",
+
+        /* Focus State */
+        [
+          "focus-visible:ring-4",
+          "focus-visible:ring-brand/20",
+          "focus-visible:border-brand",
+        ],
+
+        /* Checked State */
+        [
+          "data-[state=checked]:bg-brand",
+          "data-[state=checked]:border-brand",
+          "data-[state=checked]:text-brand-on-emphasis",
+        ],
+
+        /* Disabled State */
+        [
+          "disabled:cursor-not-allowed",
+          "disabled:opacity-40",
+        ],
+
         className
       )}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="grid place-content-center text-current transition-none"
+        className={cn(
+          "flex items-center justify-center text-current",
+          "transition-transform duration-200",
+          "data-[state=checked]:scale-100",
+          "data-[state=unchecked]:scale-0"
+        )}
       >
-        <CheckIcon className="size-3.5" />
+        <CheckIcon className="size-3.5 stroke-3" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   )

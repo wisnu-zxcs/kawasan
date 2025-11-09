@@ -1,13 +1,21 @@
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  MoreHorizontalIcon,
-} from "lucide-react"
+import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
 import type * as React from "react"
-import { type Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/services/helper/cn"
 
-function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
+/**
+ * Apple-Inspired Pagination Component
+ * 
+ * Design Principles:
+ * - Clear page navigation
+ * - Active state emphasis
+ * - Comfortable touch targets
+ * - Previous/Next labels
+ */
+
+function Pagination({
+  className,
+  ...props
+}: React.ComponentProps<"nav">) {
   return (
     <nav
       aria-label="pagination"
@@ -31,31 +39,64 @@ function PaginationContent({
   )
 }
 
-function PaginationItem({ ...props }: React.ComponentProps<"li">) {
+function PaginationItem({
+  ...props
+}: React.ComponentProps<"li">) {
   return <li data-slot="pagination-item" {...props} />
 }
 
-type PaginationLinkProps = {
+interface PaginationLinkProps extends React.ComponentProps<"a"> {
   isActive?: boolean
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">
+  size?: "sm" | "md" | "lg"
+}
 
 function PaginationLink({
   className,
-  isActive,
-  size = "icon",
+  isActive = false,
+  size = "md",
   ...props
 }: PaginationLinkProps) {
+  const sizeClasses = {
+    sm: "h-8 min-w-8 px-2 text-xs",
+    md: "h-9 min-w-9 px-3 text-sm",
+    lg: "h-10 min-w-10 px-4 text-base",
+  }
+
   return (
     <a
       aria-current={isActive ? "page" : undefined}
       data-slot="pagination-link"
       data-active={isActive}
       className={cn(
-        buttonVariants({
-          variant: isActive ? "outline" : "ghost",
-          size,
-        }),
+        /* Base Styles */
+        [
+          "inline-flex items-center justify-center gap-1",
+          "rounded-lg",
+          "font-medium",
+          "transition-colors",
+          "outline-none",
+        ],
+
+        /* Size */
+        sizeClasses[size],
+
+        /* Default State */
+        !isActive && [
+          "text-content-secondary",
+          "hover:bg-surface-secondary",
+          "hover:text-content-primary",
+        ],
+
+        /* Active State */
+        isActive && [
+          "bg-brand",
+          "text-brand-on-emphasis",
+          "pointer-events-none",
+        ],
+
+        /* Focus State */
+        "focus-visible:ring-2 focus-visible:ring-brand/30",
+
         className
       )}
       {...props}
@@ -66,16 +107,15 @@ function PaginationLink({
 function PaginationPrevious({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: PaginationLinkProps) {
   return (
     <PaginationLink
       aria-label="Go to previous page"
-      size="default"
-      className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
+      className={cn("gap-1", className)}
       {...props}
     >
-      <ChevronLeftIcon />
-      <span className="hidden sm:block">Previous</span>
+      <ChevronRightIcon className="size-4 rotate-180" />
+      <span>Previous</span>
     </PaginationLink>
   )
 }
@@ -83,16 +123,15 @@ function PaginationPrevious({
 function PaginationNext({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: PaginationLinkProps) {
   return (
     <PaginationLink
       aria-label="Go to next page"
-      size="default"
-      className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
+      className={cn("gap-1", className)}
       {...props}
     >
-      <span className="hidden sm:block">Next</span>
-      <ChevronRightIcon />
+      <span>Next</span>
+      <ChevronRightIcon className="size-4" />
     </PaginationLink>
   )
 }
@@ -105,7 +144,11 @@ function PaginationEllipsis({
     <span
       aria-hidden
       data-slot="pagination-ellipsis"
-      className={cn("flex size-9 items-center justify-center", className)}
+      className={cn(
+        "flex h-9 w-9 items-center justify-center",
+        "text-content-tertiary",
+        className
+      )}
       {...props}
     >
       <MoreHorizontalIcon className="size-4" />
@@ -117,16 +160,16 @@ function PaginationEllipsis({
 export {
   Pagination,
   PaginationContent,
-  PaginationLink,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
   PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
 }
 
 Pagination.Content = PaginationContent
-Pagination.Link = PaginationLink
-Pagination.Item = PaginationItem
-Pagination.Prev = PaginationPrevious
-Pagination.Next = PaginationNext
 Pagination.Ellipsis = PaginationEllipsis
+Pagination.Item = PaginationItem
+Pagination.Link = PaginationLink
+Pagination.Next = PaginationNext
+Pagination.Previous = PaginationPrevious
