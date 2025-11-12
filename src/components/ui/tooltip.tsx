@@ -4,17 +4,6 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Tooltip Component
- * 
- * Design Principles:
- * - Minimal, non-intrusive
- * - Quick appearance (0ms delay)
- * - Inverted color scheme
- * - Arrow pointer for context
- * - Smooth fade animation
- */
-
 function TooltipProvider({
   delayDuration = 0,
   ...props
@@ -55,7 +44,6 @@ function TooltipContent({
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         className={cn(
-          /* Base Styles */
           [
             "z-50 max-w-xs",
             "overflow-hidden",
@@ -65,8 +53,6 @@ function TooltipContent({
             "bg-content-primary text-content-inverse",
             "shadow-lg",
           ],
-
-          /* Animation */
           [
             "animate-in fade-in-0 zoom-in-95",
             "data-[state=closed]:animate-out",
@@ -77,7 +63,6 @@ function TooltipContent({
             "data-[side=right]:slide-in-from-left-2",
             "data-[side=top]:slide-in-from-bottom-2",
           ],
-
           className
         )}
         {...props}
@@ -86,12 +71,7 @@ function TooltipContent({
   )
 }
 
-export {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipProvider
-}
+export { Tooltip, TooltipProvider }
 
 Tooltip.Trigger = TooltipTrigger
 Tooltip.Content = TooltipContent

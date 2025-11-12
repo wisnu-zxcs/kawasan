@@ -5,16 +5,6 @@ import { CheckIcon, ChevronDownIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Select Component
- * 
- * Design Principles:
- * - Smooth dropdown animations
- * - Clear selected state
- * - Comfortable touch targets
- * - Refined hover interactions
- */
-
 function Select({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Root>) {
@@ -42,7 +32,6 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        /* Base Styles */
         [
           "flex items-center justify-between gap-2",
           "w-full h-11 px-4 py-2.5",
@@ -53,31 +42,20 @@ function SelectTrigger({
           "transition-all duration-200 ease-out",
           "outline-none",
         ],
-
-        /* Placeholder State */
         "data-placeholder:text-content-tertiary",
-
-        /* Hover State */
         "hover:border-border-emphasis",
         "hover:bg-surface-secondary",
-
-        /* Focus State */
         [
           "focus:border-brand",
           "focus:ring-4 focus:ring-brand/20",
           "focus:bg-canvas",
         ],
-
-        /* Disabled State */
         [
           "disabled:opacity-40",
           "disabled:cursor-not-allowed",
           "disabled:bg-surface-tertiary",
         ],
-
-        /* Icon */
         "[&>svg]:shrink-0 [&>svg]:size-4 [&>svg]:text-content-tertiary",
-
         className
       )}
       {...props}
@@ -101,7 +79,6 @@ function SelectContent({
       <SelectPrimitive.Content
         data-slot="select-content"
         className={cn(
-          /* Base Styles */
           [
             "relative z-50",
             "min-w-32",
@@ -111,8 +88,6 @@ function SelectContent({
             "bg-surface",
             "shadow-xl",
           ],
-
-          /* Animation */
           [
             "data-[state=open]:animate-in",
             "data-[state=closed]:animate-out",
@@ -121,15 +96,12 @@ function SelectContent({
             "data-[state=closed]:zoom-out-95",
             "data-[state=open]:zoom-in-95",
           ],
-
-          /* Position-specific */
           position === "popper" && [
             "data-[side=bottom]:translate-y-1",
             "data-[side=left]:-translate-x-1",
             "data-[side=right]:translate-x-1",
             "data-[side=top]:-translate-y-1",
           ],
-
           className
         )}
         position={position}
@@ -175,7 +147,6 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        /* Base Styles */
         [
           "relative flex items-center gap-2",
           "w-full px-3 py-2.5 pr-8",
@@ -185,19 +156,12 @@ function SelectItem({
           "outline-none",
           "transition-colors duration-150",
         ],
-
-        /* Focus State */
         [
           "focus:bg-surface-secondary",
           "focus:text-content-primary",
         ],
-
-        /* Disabled State */
         "data-disabled:pointer-events-none data-disabled:opacity-40",
-
-        /* Icon */
         "[&>svg]:shrink-0 [&>svg]:size-4 [&>svg]:text-content-tertiary",
-
         className
       )}
       {...props}
@@ -229,16 +193,7 @@ function SelectSeparator({
   )
 }
 
-export {
-  Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
-  SelectContent,
-  SelectLabel,
-  SelectItem,
-  SelectSeparator,
-}
+export { Select }
 
 Select.Group = SelectGroup
 Select.Value = SelectValue

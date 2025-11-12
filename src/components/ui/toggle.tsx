@@ -5,15 +5,6 @@ import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Toggle Component
- * 
- * Design Principles:
- * - Binary on/off state
- * - Clear visual feedback
- * - Accessible toggle button
- */
-
 const toggleVariants = cva(
   [
     "inline-flex items-center justify-center gap-2",

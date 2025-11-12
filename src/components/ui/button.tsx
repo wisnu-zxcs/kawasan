@@ -4,19 +4,7 @@ import type * as React from "react"
 import { Spinner } from "@/components/ui/spinner"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Button Component
- * 
- * Design Principles:
- * - Clean, minimal aesthetic
- * - Strong visual hierarchy
- * - Smooth, refined interactions
- * - Clear focus states
- * - Semantic color system
- */
-
 const buttonVariants = cva(
-  /* Base styles - Apple's refined foundation */
   [
     "inline-flex items-center justify-center gap-2",
     "rounded-xl font-medium tracking-tight",
@@ -29,7 +17,6 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        /* Primary - Yellow brand emphasis */
         primary: [
           "bg-brand text-brand-on-emphasis",
           "hover:bg-brand-emphasis",
@@ -37,8 +24,6 @@ const buttonVariants = cva(
           "focus-visible:outline-brand-emphasis",
           "shadow-sm hover:shadow-md",
         ],
-
-        /* Secondary - Subtle surface */
         secondary: [
           "bg-surface-secondary text-content-primary",
           "hover:bg-surface-tertiary",
@@ -46,8 +31,6 @@ const buttonVariants = cva(
           "focus-visible:outline-border-emphasis",
           "border border-border-default",
         ],
-
-        /* Outline - Clean border emphasis */
         outline: [
           "bg-transparent text-content-primary",
           "border-2 border-border-default",
@@ -55,16 +38,12 @@ const buttonVariants = cva(
           "active:scale-[0.98]",
           "focus-visible:outline-border-emphasis",
         ],
-
-        /* Ghost - Minimal presence */
         ghost: [
           "bg-transparent text-content-primary",
           "hover:bg-surface-secondary",
           "active:bg-surface-tertiary",
           "focus-visible:outline-border-emphasis",
         ],
-
-        /* Danger - Destructive actions */
         danger: [
           "bg-danger text-white",
           "hover:bg-danger-emphasis",
@@ -72,8 +51,6 @@ const buttonVariants = cva(
           "focus-visible:outline-danger-emphasis",
           "shadow-sm hover:shadow-md",
         ],
-
-        /* Link - Text-only interactive */
         link: [
           "bg-transparent text-interactive",
           "hover:text-interactive-hover underline-offset-4",
@@ -81,15 +58,11 @@ const buttonVariants = cva(
           "focus-visible:outline-interactive",
         ],
       },
-
       size: {
-        /* Size scale - Apple's proportional system */
         sm: "h-8 px-3 text-sm gap-1.5 rounded-lg [&_svg]:size-3.5",
         md: "h-10 px-4 text-sm gap-2 [&_svg]:size-4",
         lg: "h-12 px-6 text-base gap-2.5 [&_svg]:size-5",
         xl: "h-14 px-8 text-lg gap-3 [&_svg]:size-6",
-
-        /* Icon sizes */
         "icon-sm": "size-8 p-0 rounded-lg [&_svg]:size-4",
         "icon-md": "size-10 p-0 [&_svg]:size-5",
         "icon-lg": "size-12 p-0 [&_svg]:size-6",

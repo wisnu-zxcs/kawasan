@@ -6,16 +6,6 @@ import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Field Components
- * 
- * Design Principles:
- * - Flexible field layouts
- * - Clear label associations
- * - Error state handling
- * - Responsive orientations
- */
-
 function FieldSet({
   className,
   ...props
@@ -255,18 +245,7 @@ function FieldError({
   )
 }
 
-export {
-  Field,
-  FieldLabel,
-  FieldDescription,
-  FieldError,
-  FieldGroup,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-  FieldContent,
-  FieldTitle,
-}
+export { Field, FieldSet }
 
 Field.Label = FieldLabel
 Field.Description = FieldDescription

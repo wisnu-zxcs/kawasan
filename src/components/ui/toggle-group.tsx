@@ -6,15 +6,6 @@ import * as React from "react"
 import { toggleVariants } from "@/components/ui/toggle"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Toggle Group Component
- * 
- * Design Principles:
- * - Multiple toggle buttons
- * - Single or multiple selection
- * - Segmented control style
- */
-
 const ToggleGroupContext = React.createContext<
   VariantProps<typeof toggleVariants> & {
     spacing?: number
@@ -92,6 +83,6 @@ function ToggleGroupItem({
   )
 }
 
-export { ToggleGroup, ToggleGroupItem }
+export { ToggleGroup }
 
 ToggleGroup.Item = ToggleGroupItem

@@ -5,17 +5,6 @@ import { XIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Sheet Component (Slide-over Panel)
- * 
- * Design Principles:
- * - Smooth slide animation
- * - Backdrop blur overlay
- * - Side-specific entrance
- * - Clean visual separation
- * - Comfortable width
- */
-
 function Sheet({
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Root>) {
@@ -48,21 +37,17 @@ function SheetOverlay({
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        /* Base Styles */
         [
           "fixed inset-0 z-50",
           "bg-overlay",
           "backdrop-blur-sm",
         ],
-
-        /* Animation */
         [
           "data-[state=open]:animate-in",
           "data-[state=closed]:animate-out",
           "data-[state=closed]:fade-out-0",
           "data-[state=open]:fade-in-0",
         ],
-
         className
       )}
       {...props}
@@ -88,7 +73,6 @@ function SheetContent({
         data-slot="sheet-content"
         data-side={side}
         className={cn(
-          /* Base Styles */
           [
             "fixed z-50",
             "flex flex-col gap-6",
@@ -97,22 +81,18 @@ function SheetContent({
             "shadow-2xl",
             "p-6",
           ],
-
-          /* Side Specific */
           side === "top" && [
             "inset-x-0 top-0",
             "border-b-2",
             "rounded-b-2xl",
             "max-h-[90vh]",
           ],
-
           side === "bottom" && [
             "inset-x-0 bottom-0",
             "border-t-2",
             "rounded-t-2xl",
             "max-h-[90vh]",
           ],
-
           side === "left" && [
             "inset-y-0 left-0",
             "border-r-2",
@@ -120,7 +100,6 @@ function SheetContent({
             "w-3/4 sm:max-w-md",
             "overflow-y-auto",
           ],
-
           side === "right" && [
             "inset-y-0 right-0",
             "border-l-2",
@@ -128,8 +107,6 @@ function SheetContent({
             "w-3/4 sm:max-w-md",
             "overflow-y-auto",
           ],
-
-          /* Animation */
           [
             "transition ease-out",
             "data-[state=open]:animate-in",
@@ -137,34 +114,27 @@ function SheetContent({
             "data-[state=closed]:duration-300",
             "data-[state=open]:duration-500",
           ],
-
-          /* Direction Specific Animation */
           side === "top" && [
             "data-[state=closed]:slide-out-to-top",
             "data-[state=open]:slide-in-from-top",
           ],
-
           side === "bottom" && [
             "data-[state=closed]:slide-out-to-bottom",
             "data-[state=open]:slide-in-from-bottom",
           ],
-
           side === "left" && [
             "data-[state=closed]:slide-out-to-left",
             "data-[state=open]:slide-in-from-left",
           ],
-
           side === "right" && [
             "data-[state=closed]:slide-out-to-right",
             "data-[state=open]:slide-in-from-right",
           ],
-
           className
         )}
         {...props}
       >
         {children}
-
         <SheetPrimitive.Close
           className={cn(
             "absolute top-4 right-4",
@@ -254,18 +224,7 @@ function SheetDescription({
   )
 }
 
-export {
-  Sheet,
-  SheetPortal,
-  SheetOverlay,
-  SheetTrigger,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
-  SheetDescription,
-}
+export { Sheet }
 
 Sheet.Portal = SheetPortal
 Sheet.Overlay = SheetOverlay

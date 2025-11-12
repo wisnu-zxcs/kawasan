@@ -11,17 +11,6 @@ import { useTheme } from "next-themes"
 import { Toaster as Sonner, type ToasterProps } from "sonner"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Toast Component (Sonner)
- * 
- * Design Principles:
- * - Subtle entrance/exit animations
- * - Clear semantic icons
- * - Non-intrusive positioning
- * - Smooth blur backdrop
- * - Consistent with alert styling
- */
-
 function Toaster({ ...props }: ToasterProps) {
   const { theme = "system" } = useTheme()
 
@@ -29,8 +18,6 @@ function Toaster({ ...props }: ToasterProps) {
     <Sonner
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
-
-      /* Custom Icons */
       icons={{
         success: <CheckCircle2Icon className="size-5" />,
         info: <InfoIcon className="size-5" />,
@@ -38,11 +25,7 @@ function Toaster({ ...props }: ToasterProps) {
         error: <XCircleIcon className="size-5" />,
         loading: <Loader2Icon className="size-5 animate-spin" />,
       }}
-
-      /* Position */
       position="top-right"
-
-      /* Styling */
       toastOptions={{
         classNames: {
           toast: cn(
@@ -74,34 +57,26 @@ function Toaster({ ...props }: ToasterProps) {
           ),
         },
       }}
-
-      /* CSS Variables */
       style={
         {
           "--normal-bg": "var(--surface)",
           "--normal-border": "var(--border-default)",
           "--normal-text": "var(--content-primary)",
-
           "--success-bg": "color-mix(in oklch, var(--success) 10%, var(--surface))",
           "--success-border": "color-mix(in oklch, var(--success) 30%, transparent)",
           "--success-text": "var(--content-primary)",
-
           "--info-bg": "var(--brand-subtle)",
           "--info-border": "color-mix(in oklch, var(--brand) 30%, transparent)",
           "--info-text": "var(--content-primary)",
-
           "--warning-bg": "color-mix(in oklch, var(--warning) 10%, var(--surface))",
           "--warning-border": "color-mix(in oklch, var(--warning) 30%, transparent)",
           "--warning-text": "var(--content-primary)",
-
           "--error-bg": "color-mix(in oklch, var(--danger) 10%, var(--surface))",
           "--error-border": "color-mix(in oklch, var(--danger) 30%, transparent)",
           "--error-text": "var(--content-primary)",
-
           "--border-radius": "12px",
         } as React.CSSProperties
       }
-
       {...props}
     />
   )

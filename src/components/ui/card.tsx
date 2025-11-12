@@ -1,18 +1,7 @@
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Card Component
- * 
- * Design Principles:
- * - Elevated surfaces with subtle shadows
- * - Clean hierarchy and spacing
- * - Smooth hover interactions
- * - Flexible composition
- * - Glass morphism support
- */
-
-interface CardProps extends React.ComponentPropsWithoutRef<"div"> {
+interface CardProps extends React.ComponentProps<"div"> {
   glass?: boolean
   elevated?: boolean
   interactive?: boolean
@@ -32,7 +21,6 @@ function Card({
       data-elevated={elevated}
       data-interactive={interactive}
       className={cn(
-        /* Base Styles */
         [
           "flex flex-col",
           "rounded-2xl",
@@ -40,18 +28,12 @@ function Card({
           "border border-border-default",
           "overflow-hidden",
         ],
-
-        /* Glass Effect */
         glass && [
           "backdrop-blur-xl backdrop-saturate-150",
           "bg-surface/80",
           "border-border-subtle",
         ],
-
-        /* Elevated Shadow */
         elevated && "shadow-lg",
-
-        /* Interactive State */
         interactive && [
           "transition-all duration-200 ease-out",
           "hover:shadow-xl hover:scale-[1.02]",
@@ -59,7 +41,6 @@ function Card({
           "cursor-pointer",
           "active:scale-[0.99]",
         ],
-
         className
       )}
       {...props}
@@ -70,7 +51,7 @@ function Card({
 function CardHeader({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-header"
@@ -87,7 +68,7 @@ function CardHeader({
 function CardTitle({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"h3">) {
+}: React.ComponentProps<"h3">) {
   return (
     <h3
       data-slot="card-title"
@@ -105,7 +86,7 @@ function CardTitle({
 function CardDescription({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"p">) {
+}: React.ComponentProps<"p">) {
   return (
     <p
       data-slot="card-description"
@@ -123,7 +104,7 @@ function CardDescription({
 function CardContent({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-content"
@@ -140,7 +121,7 @@ function CardContent({
 function CardFooter({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-footer"
@@ -155,15 +136,7 @@ function CardFooter({
   )
 }
 
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  type CardProps,
-}
+export { Card, type CardProps }
 
 Card.Header = CardHeader
 Card.Footer = CardFooter

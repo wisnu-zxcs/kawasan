@@ -5,18 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Label Component
- * 
- * Design Principles:
- * - Clear form labels
- * - Accessible associations
- * - Optional/required indicators
- * - Proper contrast
- */
-
 const labelVariants = cva(
-  /* Base Styles */
   [
     "text-sm font-medium leading-none",
     "text-content-primary",

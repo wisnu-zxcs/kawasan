@@ -4,16 +4,6 @@ import * as PopoverPrimitive from "@radix-ui/react-popover"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Popover Component
- * 
- * Design Principles:
- * - Smooth scale animation
- * - Clear content hierarchy
- * - Elegant positioning
- * - Subtle shadow and border
- */
-
 function Popover({
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Root>) {
@@ -45,7 +35,6 @@ function PopoverContent({
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          /* Base Styles */
           [
             "z-50 w-80",
             "rounded-xl",
@@ -55,8 +44,6 @@ function PopoverContent({
             "shadow-xl",
             "outline-none",
           ],
-
-          /* Animation */
           [
             "data-[state=open]:animate-in",
             "data-[state=closed]:animate-out",
@@ -69,7 +56,6 @@ function PopoverContent({
             "data-[side=right]:slide-in-from-left-2",
             "data-[side=top]:slide-in-from-bottom-2",
           ],
-
           className
         )}
         {...props}
@@ -78,12 +64,7 @@ function PopoverContent({
   )
 }
 
-export {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverAnchor
-}
+export { Popover }
 
 Popover.Trigger = PopoverTrigger
 Popover.Content = PopoverContent

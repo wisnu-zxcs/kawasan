@@ -1,18 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Skeleton Component
- * 
- * Design Principles:
- * - Subtle shimmer animation
- * - Comfortable radius
- * - Multiple shape variants
- * - Content loading placeholder
- */
-
 const skeletonVariants = cva(
-  /* Base Styles */
   [
     "bg-surface-tertiary",
     "animate-pulse",
@@ -33,7 +22,7 @@ const skeletonVariants = cva(
 )
 
 interface SkeletonProps
-  extends React.ComponentPropsWithoutRef<"div">,
+  extends React.ComponentProps<"div">,
   VariantProps<typeof skeletonVariants> { }
 
 function Skeleton({
@@ -51,15 +40,11 @@ function Skeleton({
   )
 }
 
-/**
- * Skeleton Composition Components
- */
-
 function SkeletonText({
   className,
   lines = 3,
   ...props
-}: React.ComponentPropsWithoutRef<"div"> & { lines?: number }) {
+}: React.ComponentProps<"div"> & { lines?: number }) {
   return (
     <div
       data-slot="skeleton-text"
@@ -80,7 +65,7 @@ function SkeletonText({
 function SkeletonCard({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentProps<"div">) {
   return (
     <Skeleton
       data-slot="skeleton-card"
@@ -101,7 +86,7 @@ function SkeletonAvatar({
   className,
   size = "md",
   ...props
-}: React.ComponentPropsWithoutRef<"div"> & {
+}: React.ComponentProps<"div"> & {
   size?: "sm" | "md" | "lg" | "xl"
 }) {
   const sizeClasses = {
@@ -121,13 +106,7 @@ function SkeletonAvatar({
   )
 }
 
-export {
-  Skeleton,
-  SkeletonText,
-  SkeletonCard,
-  SkeletonAvatar,
-  type SkeletonProps,
-}
+export { Skeleton, type SkeletonProps }
 
 Skeleton.Text = SkeletonText
 Skeleton.Card = SkeletonCard

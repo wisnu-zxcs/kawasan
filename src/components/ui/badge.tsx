@@ -5,19 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Badge Component
- * 
- * Design Principles:
- * - Clear semantic variants
- * - Comfortable padding
- * - Subtle backgrounds
- * - Status indication
- * - Icon support
- */
-
 const badgeVariants = cva(
-  /* Base Styles */
   [
     "inline-flex items-center justify-center gap-1.5",
     "px-2.5 py-0.5",
@@ -69,7 +57,7 @@ const badgeVariants = cva(
 )
 
 interface BadgeProps
-  extends React.ComponentPropsWithoutRef<"span">,
+  extends React.ComponentProps<"span">,
   VariantProps<typeof badgeVariants> {
   asChild?: boolean
 }

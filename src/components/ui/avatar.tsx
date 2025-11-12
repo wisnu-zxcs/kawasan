@@ -4,17 +4,6 @@ import * as AvatarPrimitive from "@radix-ui/react-avatar"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Avatar Component
- * 
- * Design Principles:
- * - Circular profile images
- * - Smooth fallback handling
- * - Size variants
- * - Status indicator support
- * - Clean borders
- */
-
 interface AvatarProps
   extends React.ComponentProps<typeof AvatarPrimitive.Root> {
   size?: "sm" | "md" | "lg" | "xl"
@@ -37,7 +26,6 @@ function Avatar({
       data-slot="avatar"
       data-size={size}
       className={cn(
-        /* Base Styles */
         [
           "relative flex shrink-0",
           "overflow-hidden rounded-full",
@@ -78,7 +66,6 @@ function AvatarFallback({
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
       className={cn(
-        /* Base Styles */
         [
           "flex size-full items-center justify-center",
           "bg-surface-tertiary",
@@ -98,7 +85,7 @@ function AvatarStatus({
   className,
   variant = "online",
   ...props
-}: React.ComponentPropsWithoutRef<"span"> & {
+}: React.ComponentProps<"span"> & {
   variant?: "online" | "offline" | "away" | "busy"
 }) {
   const variantClasses = {
@@ -113,7 +100,6 @@ function AvatarStatus({
       data-slot="avatar-status"
       data-variant={variant}
       className={cn(
-        /* Base Styles */
         [
           "absolute bottom-0 right-0",
           "size-3",
@@ -130,13 +116,7 @@ function AvatarStatus({
   )
 }
 
-export {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-  AvatarStatus,
-  type AvatarProps,
-}
+export { Avatar, type AvatarProps, }
 
 Avatar.Image = AvatarImage
 Avatar.Fallback = AvatarFallback

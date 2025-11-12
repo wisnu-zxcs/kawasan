@@ -4,16 +4,6 @@ import * as SeparatorPrimitive from "@radix-ui/react-separator"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Separator Component
- * 
- * Design Principles:
- * - Subtle visual division
- * - Horizontal and vertical support
- * - Semantic section breaks
- * - Comfortable spacing
- */
-
 interface SeparatorProps
   extends React.ComponentProps<typeof SeparatorPrimitive.Root> {
   label?: string

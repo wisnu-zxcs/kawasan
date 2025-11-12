@@ -2,19 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Alert Component
- * 
- * Design Principles:
- * - Clear visual hierarchy
- * - Semantic color variants
- * - Icon support for quick recognition
- * - Comfortable padding and spacing
- * - Subtle backgrounds
- */
-
 const alertVariants = cva(
-  /* Base Styles */
   [
     "relative w-full rounded-xl",
     "px-4 py-3.5",
@@ -64,7 +52,7 @@ const alertVariants = cva(
 )
 
 interface AlertProps
-  extends React.ComponentPropsWithoutRef<"div">,
+  extends React.ComponentProps<"div">,
   VariantProps<typeof alertVariants> { }
 
 function Alert({
@@ -86,7 +74,7 @@ function Alert({
 function AlertIcon({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-icon"
@@ -102,7 +90,7 @@ function AlertIcon({
 function AlertTitle({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-title"
@@ -120,7 +108,7 @@ function AlertTitle({
 function AlertDescription({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-description"
@@ -139,7 +127,7 @@ function AlertDescription({
 function AlertContent({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-content"
@@ -149,14 +137,7 @@ function AlertContent({
   )
 }
 
-export {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  AlertContent,
-  type AlertProps,
-}
+export { Alert, type AlertProps }
 
 Alert.Icon = AlertIcon
 Alert.Title = AlertTitle

@@ -4,16 +4,6 @@ import type * as React from "react"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Item Component
- * 
- * Design Principles:
- * - List item with media support
- * - Clear visual hierarchy
- * - Flexible composition
- * - Multiple variants
- */
-
 function ItemGroup({
   className,
   ...props
@@ -246,18 +236,7 @@ function ItemFooter({
   )
 }
 
-export {
-  Item,
-  ItemMedia,
-  ItemContent,
-  ItemActions,
-  ItemGroup,
-  ItemSeparator,
-  ItemTitle,
-  ItemDescription,
-  ItemHeader,
-  ItemFooter,
-}
+export { Item }
 
 Item.Media = ItemMedia
 Item.Content = ItemContent

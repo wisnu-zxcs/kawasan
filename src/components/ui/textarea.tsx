@@ -1,17 +1,7 @@
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Textarea Component
- * 
- * Design Principles:
- * - Auto-resizing with field-sizing
- * - Consistent with Input styling
- * - Comfortable for long-form content
- * - Clear visual feedback
- */
-
-interface TextareaProps extends React.ComponentPropsWithoutRef<"textarea"> {
+interface TextareaProps extends React.ComponentProps<"textarea"> {
   error?: boolean
   success?: boolean
 }
@@ -28,7 +18,6 @@ function Textarea({
       data-error={error}
       data-success={success}
       className={cn(
-        /* Base Styles */
         [
           "flex w-full rounded-xl",
           "px-4 py-3",
@@ -40,46 +29,31 @@ function Textarea({
           "outline-none",
           "resize-y",
         ],
-
-        /* Placeholder */
         "placeholder:text-content-tertiary",
-
-        /* Selection */
         "selection:bg-brand-subtle",
         "selection:text-content-primary",
-
-        /* Hover State */
         "hover:border-border-emphasis",
         "hover:bg-surface-secondary",
-
-        /* Focus State */
         [
           "focus:border-brand",
           "focus:ring-4 focus:ring-brand/20",
           "focus:bg-canvas",
         ],
-
-        /* Error State */
         error && [
           "border-danger",
           "focus:border-danger",
           "focus:ring-danger/20",
         ],
-
-        /* Success State */
         success && [
           "border-success",
           "focus:border-success",
           "focus:ring-success/20",
         ],
-
-        /* Disabled State */
         [
           "disabled:opacity-40",
           "disabled:cursor-not-allowed",
           "disabled:bg-surface-tertiary",
         ],
-
         className
       )}
       {...props}

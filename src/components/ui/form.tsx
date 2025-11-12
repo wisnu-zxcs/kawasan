@@ -15,16 +15,6 @@ import {
 import { Label } from "@/components/ui/label"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Form Component (React Hook Form Integration)
- * 
- * Design Principles:
- * - Seamless RHF integration
- * - Clear error states
- * - Accessible form controls
- * - Proper label associations
- */
-
 const Form = FormProvider
 
 type FormFieldContextValue<

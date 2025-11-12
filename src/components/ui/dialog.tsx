@@ -5,17 +5,6 @@ import { XIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Dialog Component
- * 
- * Design Principles:
- * - Centered modal with backdrop blur
- * - Smooth scale animation
- * - Clear visual hierarchy
- * - Comfortable max-width
- * - Elegant close button
- */
-
 function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {
@@ -48,21 +37,17 @@ function DialogOverlay({
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        /* Base Styles */
         [
           "fixed inset-0 z-50",
           "bg-overlay",
           "backdrop-blur-sm",
         ],
-
-        /* Animation */
         [
           "data-[state=open]:animate-in",
           "data-[state=closed]:animate-out",
           "data-[state=closed]:fade-out-0",
           "data-[state=open]:fade-in-0",
         ],
-
         className
       )}
       {...props}
@@ -84,7 +69,6 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          /* Base Styles */
           [
             "fixed left-1/2 top-1/2 z-50",
             "-translate-x-1/2 -translate-y-1/2",
@@ -97,8 +81,6 @@ function DialogContent({
             "p-6",
             "flex flex-col gap-6",
           ],
-
-          /* Animation */
           [
             "data-[state=open]:animate-in",
             "data-[state=closed]:animate-out",
@@ -109,16 +91,12 @@ function DialogContent({
             "data-[state=closed]:slide-out-to-top-2",
             "data-[state=open]:slide-in-from-top-2",
           ],
-
-          /* Duration */
           "duration-200",
-
           className
         )}
         {...props}
       >
         {children}
-
         {showCloseButton && (
           <DialogPrimitive.Close
             className={cn(
@@ -211,18 +189,7 @@ function DialogDescription({
   )
 }
 
-export {
-  Dialog,
-  DialogPortal,
-  DialogOverlay,
-  DialogClose,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
-  DialogDescription,
-}
+export { Dialog }
 
 Dialog.Portal = DialogPortal
 Dialog.Overlay = DialogOverlay

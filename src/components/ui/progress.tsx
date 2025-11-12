@@ -4,17 +4,6 @@ import * as ProgressPrimitive from "@radix-ui/react-progress"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Progress Component
- * 
- * Design Principles:
- * - Smooth animation
- * - Brand color indicator
- * - Clear visual feedback
- * - Comfortable height
- * - Optional label support
- */
-
 interface ProgressProps
   extends React.ComponentProps<typeof ProgressPrimitive.Root> {
   showValue?: boolean
@@ -40,15 +29,12 @@ function Progress({
         data-slot="progress"
         data-size={size}
         className={cn(
-          /* Base Styles */
           [
             "relative w-full overflow-hidden",
             "rounded-full",
             "bg-surface-secondary",
           ],
-
           sizeClasses[size],
-
           className
         )}
         {...props}
@@ -64,7 +50,6 @@ function Progress({
           style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
         />
       </ProgressPrimitive.Root>
-
       {showValue && (
         <div className="flex justify-between items-center text-xs text-content-tertiary">
           <span>{Math.round(value || 0)}%</span>

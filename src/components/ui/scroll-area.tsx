@@ -4,16 +4,6 @@ import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Scroll Area Component
- * 
- * Design Principles:
- * - Custom scrollbar styling
- * - Smooth scrolling behavior
- * - Minimal visual footprint
- * - Touch-friendly on mobile
- */
-
 function ScrollArea({
   className,
   children,
@@ -51,14 +41,10 @@ function ScrollBar({
       data-slot="scroll-area-scrollbar"
       orientation={orientation}
       className={cn(
-        /* Base Styles */
         "flex touch-none select-none p-0.5",
         "transition-colors",
-
-        /* Orientation Specific */
         orientation === "vertical" && "h-full w-2.5",
         orientation === "horizontal" && "h-2.5 flex-col",
-
         className
       )}
       {...props}

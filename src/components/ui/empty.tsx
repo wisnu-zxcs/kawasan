@@ -1,16 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Empty State Component
- * 
- * Design Principles:
- * - Clear empty state messaging
- * - Icon or illustration support
- * - Actionable guidance
- * - Comfortable spacing
- */
-
 function Empty({
   className,
   ...props
@@ -131,14 +121,7 @@ function EmptyContent({
   )
 }
 
-export {
-  Empty,
-  EmptyHeader,
-  EmptyTitle,
-  EmptyDescription,
-  EmptyContent,
-  EmptyMedia,
-}
+export { Empty }
 
 Empty.Header = EmptyHeader
 Empty.Title = EmptyTitle

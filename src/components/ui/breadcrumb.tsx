@@ -3,16 +3,6 @@ import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Breadcrumb Component
- * 
- * Design Principles:
- * - Clear navigation hierarchy
- * - Subtle separators
- * - Interactive links
- * - Current page emphasis
- */
-
 function Breadcrumb({
   ...props
 }: React.ComponentProps<"nav">) {
@@ -132,15 +122,7 @@ function BreadcrumbEllipsis({
   )
 }
 
-export {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  BreadcrumbEllipsis,
-}
+export { Breadcrumb }
 
 Breadcrumb.List = BreadcrumbList
 Breadcrumb.Item = BreadcrumbItem

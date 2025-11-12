@@ -2,21 +2,9 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Loader2Icon } from "lucide-react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Spinner Component
- * 
- * Design Principles:
- * - Smooth rotation
- * - Brand color
- * - Size variants
- * - Accessible loading state
- */
-
 const spinnerVariants = cva(
-  /* Base Styles */
   [
     "animate-spin",
-    "text-brand",
   ],
   {
     variants: {
@@ -34,7 +22,7 @@ const spinnerVariants = cva(
 )
 
 interface SpinnerProps
-  extends React.ComponentPropsWithoutRef<"svg">,
+  extends React.ComponentProps<"svg">,
   VariantProps<typeof spinnerVariants> { }
 
 function Spinner({
@@ -53,15 +41,11 @@ function Spinner({
   )
 }
 
-/**
- * Loading State Component
- */
-
 function LoadingState({
   className,
   text = "Loading...",
   ...props
-}: React.ComponentPropsWithoutRef<"div"> & {
+}: React.ComponentProps<"div"> & {
   text?: string
 }) {
   return (

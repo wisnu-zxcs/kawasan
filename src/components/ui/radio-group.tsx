@@ -5,16 +5,6 @@ import { CircleIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Radio Group Component
- * 
- * Design Principles:
- * - Clear selected state
- * - Smooth transitions
- * - Comfortable spacing
- * - Brand color emphasis
- */
-
 function RadioGroup({
   className,
   ...props
@@ -36,7 +26,6 @@ function RadioGroupItem({
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
-        /* Base Styles */
         [
           "peer shrink-0",
           "size-5",
@@ -46,30 +35,21 @@ function RadioGroupItem({
           "transition-all duration-200 ease-out",
           "outline-none",
         ],
-
-        /* Hover State */
         "hover:border-border-emphasis",
         "hover:bg-surface-secondary",
-
-        /* Focus State */
         [
           "focus-visible:ring-4",
           "focus-visible:ring-brand/20",
           "focus-visible:border-brand",
         ],
-
-        /* Checked State */
         [
           "data-[state=checked]:border-brand",
           "data-[state=checked]:bg-brand",
         ],
-
-        /* Disabled State */
         [
           "disabled:cursor-not-allowed",
           "disabled:opacity-40",
         ],
-
         className
       )}
       {...props}
@@ -84,9 +64,6 @@ function RadioGroupItem({
   )
 }
 
-export {
-  RadioGroup,
-  RadioGroupItem
-}
+export { RadioGroup }
 
 RadioGroup.Item = RadioGroupItem

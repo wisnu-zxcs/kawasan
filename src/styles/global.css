@@ -3,21 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ============================================
-   Apple Design System - Design Tokens
-   ============================================ */
-
-@theme inline {
-    /* Radius System - Apple's subtle roundness */
+@theme {
     --radius-xs: 4px;
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 20px;
     --radius-2xl: 24px;
-    --radius-full: 9999px;
-
-    /* Spacing System - Consistent 4px base */
     --spacing-0: 0;
     --spacing-1: 4px;
     --spacing-2: 8px;
@@ -30,252 +22,136 @@
     --spacing-12: 48px;
     --spacing-16: 64px;
     --spacing-20: 80px;
-
-    /* Shadow System - Apple's signature depth */
     --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-sm: 0 2px 4px -1px rgb(0 0 0 / 0.06), 0 2px 2px -1px rgb(0 0 0 / 0.04);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.05);
     --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.15);
-
-    /* Color Token Mapping */
     --color-canvas: var(--canvas);
     --color-surface: var(--surface);
     --color-surface-secondary: var(--surface-secondary);
     --color-surface-tertiary: var(--surface-tertiary);
-
     --color-content-primary: var(--content-primary);
     --color-content-secondary: var(--content-secondary);
     --color-content-tertiary: var(--content-tertiary);
     --color-content-inverse: var(--content-inverse);
-
     --color-brand: var(--brand);
     --color-brand-emphasis: var(--brand-emphasis);
     --color-brand-subtle: var(--brand-subtle);
     --color-brand-on-emphasis: var(--brand-on-emphasis);
-
     --color-interactive: var(--interactive);
     --color-interactive-hover: var(--interactive-hover);
     --color-interactive-active: var(--interactive-active);
-
     --color-border-subtle: var(--border-subtle);
     --color-border-default: var(--border-default);
     --color-border-emphasis: var(--border-emphasis);
-
     --color-success: var(--success);
     --color-success-emphasis: var(--success-emphasis);
     --color-warning: var(--warning);
     --color-warning-emphasis: var(--warning-emphasis);
     --color-danger: var(--danger);
     --color-danger-emphasis: var(--danger-emphasis);
-
     --color-overlay: var(--overlay);
     --color-focus-ring: var(--focus-ring);
 }
 
-/* ============================================
-   Light Theme - Apple's Refined Palette
-   ============================================ */
-
 :root {
-    /* Core radius */
-    --radius: 12px;
-
-    /* Canvas & Surfaces - Clean, bright foundation */
+    --radius: var(--radius-md);
     --canvas: oklch(1 0 0);
     --surface: oklch(0.99 0 0);
     --surface-secondary: oklch(0.97 0.002 286);
     --surface-tertiary: oklch(0.95 0.004 286);
-
-    /* Content - Clear hierarchy */
     --content-primary: oklch(0.15 0.006 286);
     --content-secondary: oklch(0.48 0.012 286);
     --content-tertiary: oklch(0.62 0.008 286);
     --content-inverse: oklch(1 0 0);
-
-    /* Brand - Yellow Primary */
     --brand: oklch(0.75 0.15 85);
     --brand-emphasis: oklch(0.65 0.16 80);
     --brand-subtle: oklch(0.95 0.04 90);
     --brand-on-emphasis: oklch(0.20 0.02 75);
-
-    /* Interactive States */
     --interactive: oklch(0.75 0.15 85);
     --interactive-hover: oklch(0.70 0.16 82);
     --interactive-active: oklch(0.65 0.16 80);
-
-    /* Borders - Subtle separation */
     --border-subtle: oklch(0.92 0.002 286 / 0.4);
     --border-default: oklch(0.88 0.004 286 / 0.6);
     --border-emphasis: oklch(0.75 0.15 85);
-
-    /* Semantic Colors */
     --success: oklch(0.65 0.15 150);
     --success-emphasis: oklch(0.55 0.16 145);
     --warning: oklch(0.70 0.14 65);
     --warning-emphasis: oklch(0.60 0.15 60);
     --danger: oklch(0.60 0.20 25);
     --danger-emphasis: oklch(0.50 0.21 22);
-
-    /* Overlay & Focus */
     --overlay: oklch(0.15 0.006 286 / 0.4);
     --focus-ring: oklch(0.75 0.15 85 / 0.5);
-
-    /* Legacy Support (for gradual migration) */
-    --background: var(--canvas);
-    --foreground: var(--content-primary);
-    --primary: var(--brand);
-    --primary-foreground: var(--brand-on-emphasis);
-    --muted: var(--surface-secondary);
-    --muted-foreground: var(--content-secondary);
-    --border: var(--border-default);
-    --input: var(--border-default);
-    --ring: var(--focus-ring);
 }
 
-/* ============================================
-   Dark Theme - Apple's Premium Dark Mode
-   ============================================ */
-
 .dark {
-    /* Canvas & Surfaces - Deep, layered */
     --canvas: oklch(0.15 0.006 286);
     --surface: oklch(0.18 0.008 286);
     --surface-secondary: oklch(0.22 0.01 286);
     --surface-tertiary: oklch(0.26 0.012 286);
-
-    /* Content - Optimized for dark */
     --content-primary: oklch(0.97 0 0);
     --content-secondary: oklch(0.68 0.008 286);
     --content-tertiary: oklch(0.52 0.012 286);
     --content-inverse: oklch(0.15 0.006 286);
-
-    /* Brand - Yellow adjusted for dark */
     --brand: oklch(0.78 0.14 88);
     --brand-emphasis: oklch(0.82 0.13 90);
     --brand-subtle: oklch(0.30 0.03 85);
     --brand-on-emphasis: oklch(0.15 0.006 286);
-
-    /* Interactive States */
     --interactive: oklch(0.78 0.14 88);
     --interactive-hover: oklch(0.82 0.13 90);
     --interactive-active: oklch(0.85 0.12 92);
-
-    /* Borders - Refined for dark */
     --border-subtle: oklch(1 0 0 / 0.08);
     --border-default: oklch(1 0 0 / 0.14);
     --border-emphasis: oklch(0.78 0.14 88);
-
-    /* Semantic Colors - Dark optimized */
     --success: oklch(0.68 0.14 152);
     --success-emphasis: oklch(0.72 0.13 155);
     --warning: oklch(0.73 0.13 67);
     --warning-emphasis: oklch(0.76 0.12 70);
     --danger: oklch(0.63 0.19 27);
     --danger-emphasis: oklch(0.67 0.18 29);
-
-    /* Overlay & Focus */
     --overlay: oklch(0 0 0 / 0.5);
     --focus-ring: oklch(0.78 0.14 88 / 0.5);
-
-    /* Legacy Support */
-    --background: var(--canvas);
-    --foreground: var(--content-primary);
-    --primary: var(--brand);
-    --primary-foreground: var(--brand-on-emphasis);
-    --muted: var(--surface-secondary);
-    --muted-foreground: var(--content-secondary);
-    --border: var(--border-default);
-    --input: var(--border-default);
-    --ring: var(--focus-ring);
 }
-
-/* ============================================
-   Base Styles - Apple's Typography & Reset
-   ============================================ */
 
 @layer base {
     * {
-        @apply border-border-default;
-        outline-color: var(--focus-ring);
-        box-sizing: border-box;
+        @apply border-border-default outline-focus-ring box-border;
     }
 
     html {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
     }
 
     body {
-        @apply bg-canvas text-content-primary;
+        @apply bg-canvas text-content-primary antialiased;
         font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-        letter-spacing: -0.011em;
     }
 
-    /* Apple's Typography Scale */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-weight: 600;
-        letter-spacing: -0.022em;
-        line-height: 1.1;
-    }
-
-    /* Focus States - Apple's signature blue ring alternative */
     :focus-visible {
-        outline: 2px solid var(--focus-ring);
-        outline-offset: 2px;
+        @apply outline-2 outline-offset-2 outline-solid outline-focus-ring;
     }
 
-    /* Selection */
     ::selection {
-        background-color: var(--brand-subtle);
-        color: var(--content-primary);
-    }
-
-    /* Smooth Scrolling */
-    @media (prefers-reduced-motion: no-preference) {
-        html {
-            scroll-behavior: smooth;
-        }
+        @apply bg-brand-subtle text-content-primary;
     }
 }
 
-/* ============================================
-   Utility Classes - Apple-Inspired Helpers
-   ============================================ */
+@utility glass {
+    @apply bg-surface backdrop-blur-[20px] saturate-[180];
+}
 
-@layer utilities {
+@utility elevated {
+    @apply shadow-lg;
+}
 
-    /* Glass Effect - Apple's signature style */
-    .glass {
-        background: var(--surface);
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-    }
+@utility transition-apple {
+    @apply transition-all ease-in-out duration-200;
+}
 
-    /* Elevated Cards */
-    .elevated {
-        box-shadow: var(--shadow-lg);
-    }
-
-    /* Smooth Transitions */
-    .transition-apple {
-        transition-property: all;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 200ms;
-    }
-
-    /* Text Gradients */
-    .text-gradient-brand {
-        background: linear-gradient(135deg, var(--brand-emphasis), var(--brand));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
+@utility text-gradient-brand {
+    @apply bg-clip-text bg-linear-[135deg] from-brand-emphasis to-brand;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

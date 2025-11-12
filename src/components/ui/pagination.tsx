@@ -2,16 +2,6 @@ import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Pagination Component
- * 
- * Design Principles:
- * - Clear page navigation
- * - Active state emphasis
- * - Comfortable touch targets
- * - Previous/Next labels
- */
-
 function Pagination({
   className,
   ...props
@@ -68,7 +58,6 @@ function PaginationLink({
       data-slot="pagination-link"
       data-active={isActive}
       className={cn(
-        /* Base Styles */
         [
           "inline-flex items-center justify-center gap-1",
           "rounded-lg",
@@ -76,27 +65,18 @@ function PaginationLink({
           "transition-colors",
           "outline-none",
         ],
-
-        /* Size */
         sizeClasses[size],
-
-        /* Default State */
         !isActive && [
           "text-content-secondary",
           "hover:bg-surface-secondary",
           "hover:text-content-primary",
         ],
-
-        /* Active State */
         isActive && [
           "bg-brand",
           "text-brand-on-emphasis",
           "pointer-events-none",
         ],
-
-        /* Focus State */
         "focus-visible:ring-2 focus-visible:ring-brand/30",
-
         className
       )}
       {...props}
@@ -157,15 +137,7 @@ function PaginationEllipsis({
   )
 }
 
-export {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-}
+export { Pagination }
 
 Pagination.Content = PaginationContent
 Pagination.Ellipsis = PaginationEllipsis

@@ -5,17 +5,6 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Dropdown Menu Component
- * 
- * Design Principles:
- * - Clean, minimal menu items
- * - Clear visual hierarchy
- * - Smooth hover states
- * - Comfortable touch targets
- * - Semantic grouping
- */
-
 function DropdownMenu({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
@@ -44,7 +33,6 @@ function DropdownMenuContent({
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         className={cn(
-          /* Base Styles */
           [
             "z-50 min-w-48",
             "overflow-hidden",
@@ -54,8 +42,6 @@ function DropdownMenuContent({
             "p-1",
             "shadow-xl",
           ],
-
-          /* Animation */
           [
             "data-[state=open]:animate-in",
             "data-[state=closed]:animate-out",
@@ -68,7 +54,6 @@ function DropdownMenuContent({
             "data-[side=right]:slide-in-from-left-2",
             "data-[side=top]:slide-in-from-bottom-2",
           ],
-
           className
         )}
         {...props}
@@ -89,7 +74,6 @@ function DropdownMenuItem({
       data-slot="dropdown-menu-item"
       data-variant={variant}
       className={cn(
-        /* Base Styles */
         [
           "relative flex items-center gap-2",
           "px-3 py-2",
@@ -99,27 +83,18 @@ function DropdownMenuItem({
           "outline-none",
           "transition-colors",
         ],
-
-        /* Default Variant */
         variant === "default" && [
           "text-content-primary",
           "focus:bg-surface-secondary",
           "focus:text-content-primary",
         ],
-
-        /* Danger Variant */
         variant === "danger" && [
           "text-danger",
           "focus:bg-danger/10",
           "focus:text-danger",
         ],
-
-        /* Disabled State */
         "data-disabled:pointer-events-none data-disabled:opacity-40",
-
-        /* Icon */
         "[&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-content-tertiary",
-
         className
       )}
       {...props}
@@ -137,7 +112,6 @@ function DropdownMenuCheckboxItem({
     <DropdownMenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       className={cn(
-        /* Base Styles */
         [
           "relative flex items-center gap-2",
           "px-3 py-2 pl-8",
@@ -147,16 +121,11 @@ function DropdownMenuCheckboxItem({
           "outline-none",
           "transition-colors",
         ],
-
-        /* Focus State */
         [
           "focus:bg-surface-secondary",
           "focus:text-content-primary",
         ],
-
-        /* Disabled State */
         "data-disabled:pointer-events-none data-disabled:opacity-40",
-
         className
       )}
       checked={checked}
@@ -192,7 +161,6 @@ function DropdownMenuRadioItem({
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        /* Base Styles */
         [
           "relative flex items-center gap-2",
           "px-3 py-2 pl-8",
@@ -202,16 +170,11 @@ function DropdownMenuRadioItem({
           "outline-none",
           "transition-colors",
         ],
-
-        /* Focus State */
         [
           "focus:bg-surface-secondary",
           "focus:text-content-primary",
         ],
-
-        /* Disabled State */
         "data-disabled:pointer-events-none data-disabled:opacity-40",
-
         className
       )}
       {...props}
@@ -288,7 +251,6 @@ function DropdownMenuSubTrigger({
     <DropdownMenuPrimitive.SubTrigger
       data-slot="dropdown-menu-sub-trigger"
       className={cn(
-        /* Base Styles */
         [
           "flex items-center gap-2",
           "px-3 py-2",
@@ -298,16 +260,11 @@ function DropdownMenuSubTrigger({
           "outline-none",
           "transition-colors",
         ],
-
-        /* Focus State */
         [
           "focus:bg-surface-secondary",
           "data-[state=open]:bg-surface-secondary",
         ],
-
-        /* Icon */
         "[&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-content-tertiary",
-
         className
       )}
       {...props}
@@ -326,7 +283,6 @@ function DropdownMenuSubContent({
     <DropdownMenuPrimitive.SubContent
       data-slot="dropdown-menu-sub-content"
       className={cn(
-        /* Base Styles */
         [
           "z-50 min-w-48",
           "overflow-hidden",
@@ -336,8 +292,6 @@ function DropdownMenuSubContent({
           "p-1",
           "shadow-xl",
         ],
-
-        /* Animation */
         [
           "data-[state=open]:animate-in",
           "data-[state=closed]:animate-out",
@@ -350,7 +304,6 @@ function DropdownMenuSubContent({
           "data-[side=right]:slide-in-from-left-2",
           "data-[side=top]:slide-in-from-bottom-2",
         ],
-
         className
       )}
       {...props}
@@ -375,22 +328,7 @@ function DropdownMenuShortcut({
   )
 }
 
-export {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuCheckboxItem,
-  DropdownMenuRadioItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuGroup,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
-}
+export { DropdownMenu }
 
 DropdownMenu.Trigger = DropdownMenuTrigger
 DropdownMenu.Content = DropdownMenuContent

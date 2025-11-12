@@ -7,16 +7,6 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Input Group Component
- * 
- * Design Principles:
- * - Combined input with addons
- * - Icon/button support
- * - Inline/block alignment
- * - Unified focus states
- */
-
 function InputGroup({
   className,
   ...props
@@ -25,7 +15,6 @@ function InputGroup({
     <fieldset
       data-slot="input-group"
       className={cn(
-        /* Base Styles */
         [
           "group/input-group relative flex w-full items-center",
           "rounded-xl",
@@ -34,25 +23,18 @@ function InputGroup({
           "transition-all duration-200",
           "outline-none",
         ],
-
-        /* Height */
         "h-11 min-w-0",
         "has-[>textarea]:h-auto",
-
-        /* Focus State */
         [
           "has-[[data-slot=input-group-control]:focus-visible]:border-brand",
           "has-[[data-slot=input-group-control]:focus-visible]:ring-4",
           "has-[[data-slot=input-group-control]:focus-visible]:ring-brand/20",
         ],
-
-        /* Error State */
         [
           "has-[[data-slot][aria-invalid=true]]:border-danger",
           "has-[[data-slot][aria-invalid=true]]:ring-4",
           "has-[[data-slot][aria-invalid=true]]:ring-danger/20",
         ],
-
         className
       )}
       {...props}
@@ -195,14 +177,7 @@ function InputGroupTextarea({
   )
 }
 
-export {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupText,
-  InputGroupInput,
-  InputGroupTextarea,
-}
+export { InputGroup }
 
 InputGroup.AddOn = InputGroupAddon
 InputGroup.Button = InputGroupButton

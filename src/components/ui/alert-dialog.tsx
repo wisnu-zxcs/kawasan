@@ -5,17 +5,6 @@ import type * as React from "react"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Alert Dialog Component
- * 
- * Design Principles:
- * - Critical action confirmation
- * - Clear visual hierarchy
- * - Centered modal with backdrop
- * - Prominent action buttons
- * - Non-dismissible by default
- */
-
 function AlertDialog({
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Root>) {
@@ -52,14 +41,11 @@ function AlertDialogOverlay({
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       className={cn(
-        /* Base Styles */
         [
           "fixed inset-0 z-50",
           "bg-overlay",
           "backdrop-blur-sm",
         ],
-
-        /* Animation */
         [
           "data-[state=open]:animate-in",
           "data-[state=closed]:animate-out",
@@ -84,7 +70,6 @@ function AlertDialogContent({
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         className={cn(
-          /* Base Styles */
           [
             "fixed left-1/2 top-1/2 z-50",
             "-translate-x-1/2 -translate-y-1/2",
@@ -96,8 +81,6 @@ function AlertDialogContent({
             "p-6",
             "flex flex-col gap-6",
           ],
-
-          /* Animation */
           [
             "data-[state=open]:animate-in",
             "data-[state=closed]:animate-out",
@@ -106,10 +89,7 @@ function AlertDialogContent({
             "data-[state=closed]:zoom-out-95",
             "data-[state=open]:zoom-in-95",
           ],
-
-          /* Duration */
           "duration-200",
-
           className
         )}
         {...props}
@@ -220,19 +200,7 @@ function AlertDialogCancel({
   )
 }
 
-export {
-  AlertDialog,
-  AlertDialogPortal,
-  AlertDialogOverlay,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogAction,
-  AlertDialogCancel,
-}
+export { AlertDialog }
 
 AlertDialog.Portal = AlertDialogPortal
 AlertDialog.Overlay = AlertDialogOverlay

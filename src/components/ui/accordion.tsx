@@ -5,17 +5,6 @@ import { ChevronDownIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Accordion Component
- * 
- * Design Principles:
- * - Smooth expand/collapse animation
- * - Clear visual hierarchy
- * - Comfortable touch targets
- * - Subtle borders
- * - Chevron rotation feedback
- */
-
 function Accordion({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
@@ -48,7 +37,6 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          /* Base Styles */
           [
             "flex flex-1 items-center justify-between gap-3",
             "py-4",
@@ -56,20 +44,13 @@ function AccordionTrigger({
             "transition-all",
             "outline-none",
           ],
-
-          /* Hover State */
           "hover:text-brand",
-
-          /* Focus State */
           [
             "focus-visible:ring-2",
             "focus-visible:ring-brand/30",
             "focus-visible:rounded-lg",
           ],
-
-          /* Icon Rotation */
           "[&[data-state=open]>svg]:rotate-180",
-
           className
         )}
         {...props}
@@ -90,7 +71,6 @@ function AccordionContent({
     <AccordionPrimitive.Content
       data-slot="accordion-content"
       className={cn(
-        /* Animation */
         "overflow-hidden text-sm",
         "data-[state=closed]:animate-accordion-up",
         "data-[state=open]:animate-accordion-down",
@@ -105,12 +85,7 @@ function AccordionContent({
   )
 }
 
-export {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent
-}
+export { Accordion }
 
 Accordion.Item = AccordionItem
 Accordion.Trigger = AccordionTrigger

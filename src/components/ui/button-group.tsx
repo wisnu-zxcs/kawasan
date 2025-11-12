@@ -3,16 +3,6 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Button Group Component
- * 
- * Design Principles:
- * - Segmented control style
- * - Connected button appearance
- * - Horizontal/vertical layouts
- * - Separator support
- */
-
 const buttonGroupVariants = cva(
   "flex w-fit items-stretch [&>*]:focus-visible:z-10 [&>*]:focus-visible:relative",
   {
@@ -99,12 +89,7 @@ function ButtonGroupSeparator({
   )
 }
 
-export {
-  ButtonGroup,
-  ButtonGroupSeparator,
-  ButtonGroupText,
-  buttonGroupVariants,
-}
+export { ButtonGroup, buttonGroupVariants }
 
 ButtonGroup.Separator = ButtonGroupSeparator
 ButtonGroup.Text = ButtonGroupText

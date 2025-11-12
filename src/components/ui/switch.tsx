@@ -4,17 +4,6 @@ import * as SwitchPrimitive from "@radix-ui/react-switch"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Switch Component
- * 
- * Design Principles:
- * - iOS-style toggle switch
- * - Smooth slide animation
- * - Brand color when active
- * - Comfortable thumb size
- * - Clear on/off states
- */
-
 function Switch({
   className,
   ...props
@@ -23,7 +12,6 @@ function Switch({
     <SwitchPrimitive.Root
       data-slot="switch"
       className={cn(
-        /* Base Styles */
         [
           "peer inline-flex shrink-0",
           "h-6 w-11",
@@ -32,30 +20,21 @@ function Switch({
           "transition-all duration-200 ease-out",
           "outline-none",
         ],
-
-        /* Unchecked State */
         [
           "bg-border-default",
           "data-[state=unchecked]:bg-border-default",
         ],
-
-        /* Checked State */
         [
           "data-[state=checked]:bg-brand",
         ],
-
-        /* Focus State */
         [
           "focus-visible:ring-4",
           "focus-visible:ring-brand/20",
         ],
-
-        /* Disabled State */
         [
           "disabled:cursor-not-allowed",
           "disabled:opacity-40",
         ],
-
         className
       )}
       {...props}
@@ -63,7 +42,6 @@ function Switch({
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
         className={cn(
-          /* Base Styles */
           [
             "pointer-events-none block",
             "size-5",
@@ -72,8 +50,6 @@ function Switch({
             "shadow-md",
             "transition-transform duration-200 ease-out",
           ],
-
-          /* Position */
           [
             "data-[state=unchecked]:translate-x-0",
             "data-[state=checked]:translate-x-5",

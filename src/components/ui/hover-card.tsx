@@ -4,16 +4,6 @@ import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Hover Card Component
- * 
- * Design Principles:
- * - Contextual information on hover
- * - Smooth fade animation
- * - Non-intrusive positioning
- * - Clear visual hierarchy
- */
-
 function HoverCard({
   ...props
 }: React.ComponentProps<typeof HoverCardPrimitive.Root>) {
@@ -44,7 +34,6 @@ function HoverCardContent({
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          /* Base Styles */
           [
             "z-50 w-80",
             "rounded-xl",
@@ -54,8 +43,6 @@ function HoverCardContent({
             "shadow-xl",
             "outline-none",
           ],
-
-          /* Animation */
           [
             "data-[state=open]:animate-in",
             "data-[state=closed]:animate-out",
@@ -68,7 +55,6 @@ function HoverCardContent({
             "data-[side=right]:slide-in-from-left-2",
             "data-[side=top]:slide-in-from-bottom-2",
           ],
-
           className
         )}
         {...props}
@@ -77,11 +63,7 @@ function HoverCardContent({
   )
 }
 
-export {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardContent
-}
+export { HoverCard }
 
 HoverCard.Trigger = HoverCardTrigger
 HoverCard.Content = HoverCardContent

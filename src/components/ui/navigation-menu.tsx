@@ -4,16 +4,6 @@ import { ChevronDownIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/services/helper/cn"
 
-/**
- * Apple-Inspired Navigation Menu Component
- * 
- * Design Principles:
- * - Dropdown navigation
- * - Smooth animations
- * - Clear active states
- * - Accessible keyboard navigation
- */
-
 function NavigationMenu({
   className,
   children,
@@ -128,7 +118,6 @@ function NavigationMenuContent({
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
       className={cn(
-        /* Animation */
         [
           "data-[motion^=from-]:animate-in",
           "data-[motion^=to-]:animate-out",
@@ -139,10 +128,7 @@ function NavigationMenuContent({
           "data-[motion=to-end]:slide-out-to-right-8",
           "data-[motion=to-start]:slide-out-to-left-8",
         ],
-
-        /* Position */
         "top-0 left-0 w-full p-2 md:absolute md:w-auto",
-
         className
       )}
       {...props}
@@ -159,7 +145,6 @@ function NavigationMenuViewport({
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          /* Base Styles */
           [
             "relative mt-2",
             "origin-top-center",
@@ -169,19 +154,14 @@ function NavigationMenuViewport({
             "bg-surface",
             "shadow-xl",
           ],
-
-          /* Animation */
           [
             "data-[state=open]:animate-in",
             "data-[state=closed]:animate-out",
             "data-[state=closed]:zoom-out-95",
             "data-[state=open]:zoom-in-95",
           ],
-
-          /* Dynamic Sizing */
           "h-(--radix-navigation-menu-viewport-height)",
           "w-full md:w-(--radix-navigation-menu-viewport-width)",
-
           className
         )}
         {...props}
@@ -198,7 +178,6 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        /* Base Styles */
         [
           "flex flex-col gap-1",
           "p-3 rounded-lg",
@@ -206,20 +185,13 @@ function NavigationMenuLink({
           "transition-colors",
           "outline-none",
         ],
-
-        /* States */
         [
           "hover:bg-surface-secondary",
           "focus:bg-surface-secondary",
           "data-[active=true]:bg-surface-secondary",
         ],
-
-        /* Focus */
         "focus-visible:ring-2 focus-visible:ring-brand/30",
-
-        /* Icon */
         "[&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-content-tertiary",
-
         className
       )}
       {...props}
@@ -227,16 +199,7 @@ function NavigationMenuLink({
   )
 }
 
-export {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuLink,
-  NavigationMenuViewport,
-  navigationMenuTriggerStyle,
-}
+export { NavigationMenu, navigationMenuTriggerStyle }
 
 NavigationMenu.List = NavigationMenuList
 NavigationMenu.Item = NavigationMenuItem
